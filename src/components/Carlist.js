@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Addcar from './Addcar';
 import Editcar from './Editcar';
+import {CSVLink, CSVDownload} from 'react-csv';
 
 export default function Carlist (){
 
@@ -61,6 +62,15 @@ export default function Carlist (){
     .catch(err => console.error(err))
   }
 
+  const headers = [
+    { label: "Brand", key: "brand" },
+    { label: "Model", key: "model" },
+    { label: "Color", key: "color" },
+    { label: "Fuel", key: "fuel" },
+    { label: "Year", key: "year" },
+    { label: "Price", key: "price"}
+  ];
+
   const columns =[
     {
       Header: 'Brand',
@@ -103,6 +113,9 @@ export default function Carlist (){
 
   return (
     <div>
+      <CSVLink data={cars} headers={headers} filename={"CarShopCSV"}>
+        Download table as CSV file
+      </CSVLink>
       <Addcar saveCar={saveCar} />
       <ReactTable filterable={true} data={cars} columns={columns} />
       <Snackbar
