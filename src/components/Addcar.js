@@ -13,6 +13,7 @@ export default function Addcar(props) {
     brand:'', model: '', color: '', fuel: '', year: '', price: ''
   })
 
+  // comment for github testing purposes
   const handleClickOpen = () => {
     setOpen(true);
   };
